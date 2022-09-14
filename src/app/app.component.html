@@ -134,10 +134,10 @@
 
 <div class="container content">
   <div class="d-flex justify-content-around">
-    <button type="button" class="btn btn-info" (click)="notificar('Información importante', 'Informacion')">Notificar Informacion</button>
-    <button type="button" class="btn btn-warning" (click)="notificar('Advertencia, algo ocurrió', 'Advertencia')">Notificar
+    <button type="button" class="btn btn-info" (click)="notificar('Notificar informacion','Información importante', 'Informacion')">Notificar Informacion</button>
+    <button type="button" class="btn btn-warning" (click)="notificar('Notificar advertencia','Advertencia, algo ocurrió', 'Advertencia')">Notificar
       Advertencia</button>
-    <button type="button" class="btn btn-danger" (click)="notificar('Error, no pudimos realizar la acción solicitada', 'Error')">Notificar Error</button>
+    <button type="button" class="btn btn-danger" (click)="notificar('Notificar error','Error, no pudimos realizar la acción solicitada', 'Error')">Notificar Error</button>
     <button type="button" class="btn btn-dark" (click)="limpiarNotificaciones()">Limpiar</button>
 
     
@@ -145,8 +145,13 @@
 <div class="container mt-5">
 <div class="alert" [class.alert-primary]="notificacion.tipo === 'Informacion'"
       [class.alert-warning]="notificacion.tipo === 'Advertencia'" [class.alert-danger]="notificacion.tipo === 'Error'"
-      role="alert" *ngFor='let notificacion of notificacionService.notificaciones'> {{notificacion.mensaje}} </div>
+      role="alert" *ngFor='let notificacion of notificacionService.notificaciones'> 
+      <h4>{{notificacion.titulo}}</h4>
+      <p>{{notificacion.mensaje}}</p>
+      <p>{{notificacion.hora?.toLocaleTimeString()}}</p>
+    </div>
   </div>
 </div>
-
+<a routerLink="/primero">Primer componente</a>
+<a routerLink="/segundo">Segundo componente</a>
 <router-outlet></router-outlet>

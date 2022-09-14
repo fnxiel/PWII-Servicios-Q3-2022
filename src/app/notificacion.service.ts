@@ -9,11 +9,13 @@ export class NotificacionService {
 
   constructor() { }
 
-  notificar(mensaje: string, tipo: "Informacion" | "Advertencia" | "Error"){
+  notificar(titulo: string, mensaje: string, tipo: "Informacion" | "Advertencia" | "Error"){
     this.notificaciones.push({
       id: Math.max(...this.notificaciones.map(notificacion => notificacion.id)),
+      titulo: titulo,
       mensaje: mensaje,
-      tipo: tipo
+      tipo: tipo,
+      hora: new Date()
     })
   }
 
